@@ -1,0 +1,19 @@
+interface Evidence
+{
+  String getName();
+}
+class Room
+{
+  isA Evidence;
+}
+
+class Player
+{
+  isA Evidence;
+}
+
+class Weapon
+{
+  isA Evidence;
+}
+
