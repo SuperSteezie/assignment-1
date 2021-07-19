@@ -1,0 +1,59 @@
+Interfaces:
+
+Interface Evidence (anything that can be part of a guess)
+Interface Moveable extends Evidence (anything that can be put in a Room)
+Interface Tile (anything that can be placed at a position on a GameBoard)
+
+
+Classes:
+
+GameBoard (has a Room, but unique in that it additionally stores positions of objects)
+Game (main object, runs everything)
+Card (basically a container for evidence, possibly not needed)
+Room implements Evidence (containers for moveables)
+Player implements Moveable (game characters)
+Weapon implements Moveable (killed by ipad lol)
+GameTile implements Tile (either a wall or a some floor)
+Door implements Tile (moves players from a GameBoard to Standalone room and vice-versa)
+
+
+Class breakdowns: (general structure of what is stored where)
+
+GameBoard:
+murderWeapon
+murderRoom
+murderer
+Tiles
+Room
+PositionsOfPeople
+Doors
+DoorPositions
+
+Game: //needs work
+GameBoard
+CurrentPlayer
+
+Card:
+Evidence
+
+Player:
+Name
+Cards
+
+Weapon:
+Name
+
+Door:
+Board (Board will contain the Room for the Board)
+Room (Room door leads to)
+Direction (if player is in the standalone room they need to exit by the correct direction)
+
+Room:
+Name
+Moveables
+Doors (doors in this room that lead somewhere else)
+
+GameTile:
+IsAWall (meaning you cant move onto it)
+CharToDraw
+
