@@ -17,3 +17,59 @@ class Weapon
   isA Evidence;
 }
 
+class Game
+{
+}
+
+class Moveable
+{
+}
+
+class Space
+{
+}
+
+class Board
+{
+  isA Space;
+}
+
+//$?[End_of_model]$?
+
+namespace -;
+
+
+class Room
+{
+  position 152 200 109 40;
+}
+
+class Player
+{
+  position 512 94 109 40;
+}
+
+class Weapon
+{
+  position 35 352 109 40;
+}
+
+class Game
+{
+  position 832 467 109 40;
+}
+
+class Moveable
+{
+  position 818 260 109 40;
+}
+
+class Space
+{
+  position 659 472 109 40;
+}
+
+class Board
+{
+  position 487 384 109 41;
+}
