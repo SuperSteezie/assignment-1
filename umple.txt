@@ -1,75 +1,71 @@
-interface Evidence
-{
-  String getName();
-}
-class Room
-{
-  isA Evidence;
+class Game{
+  bool run;
 }
 
-class Player
-{
-  isA Evidence;
+class Board{
+  Weapon murderWeapon;
+  Room murderRoom;
+  Player murderer;
+  
+  1 -- 1 Game;
+  1 -- * Card;
+  1 -- * Tile;
+  1 -- * Room;
+  1 -- * Weapon;
 }
 
-class Weapon
-{
-  isA Evidence;
+class Room{
+   String name;
 }
 
-class Game
-{
+class Weapon{
+  String name;
 }
 
-class Moveable
-{
+/* CARD CLASSES */
+class Card{
+  Player ownerOfCard;
 }
 
-class Space
-{
+class PlayerCard{
+  isA Card;
+  Player player;
 }
 
-class Board
-{
-  isA Space;
+class WeaponCard{
+  isA Card;
+  Weapon weapon;
 }
 
-//$?[End_of_model]$?
-
-namespace -;
-
-
-class Room
-{
-  position 152 200 109 40;
+class RoomCard{
+  isA Card;
+  Room room;
 }
 
-class Player
-{
-  position 512 94 109 40;
+/* TILE CLASSES */
+class Tile{
+  
 }
 
-class Weapon
-{
-  position 35 352 109 40;
+class WhiteSquare{
+  isA Tile;
 }
 
-class Game
-{
-  position 832 467 109 40;
+class GreySquare{
+  isA Tile;
 }
 
-class Moveable
-{
-  position 818 260 109 40;
+class Wall{
+  isA Tile;
+  Room aroundRoom;
 }
 
-class Space
-{
-  position 659 472 109 40;
+class Player{
+  isA Tile;
+  String name;
 }
 
-class Board
-{
-  position 487 384 109 41;
+class Door{
+  isA Tile;
+  Room inRoom;
 }
