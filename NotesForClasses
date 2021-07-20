@@ -14,6 +14,8 @@ Room implements Evidence (containers for moveables)
 Player implements Moveable (game characters)
 Weapon implements Moveable (killed by ipad lol)
 GameTile implements Tile (either a wall or a some floor)
+  Possibly do it so GameTile is the interface, and there are classes for WhiteSquare, GreySquare, Door, Wall, Player. Remove Moveable
+  interface and instead have it so each GameTile class stores objects position.
 Door implements Tile (moves players from a GameBoard to Standalone room and vice-versa)
 
 
