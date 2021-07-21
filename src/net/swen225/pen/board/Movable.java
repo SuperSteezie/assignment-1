@@ -1,6 +1,8 @@
 package net.swen225.pen.board;
 
-public interface Movable {
+import net.swen225.pen.Evidence;
+
+public interface Movable extends Evidence{
 
 	Space getSpace();
 
