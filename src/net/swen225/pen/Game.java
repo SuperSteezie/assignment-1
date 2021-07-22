@@ -75,7 +75,7 @@ private void run() {
 	 */
 
 
-	//System.out.println(Board.drawBoard());
+//System.out.println(Board.drawBoard());
 
 	int count= r.nextInt(3);
 	turn(players.get(count));
@@ -106,10 +106,36 @@ private void move(Player player, int moves){
 //else "invaild move, try agian"
 //move(player, moves)
 }
-private void guess(){
-//"input player"
-//"input weapon"
-// move player and weapon to room
+private void guess(Player player){
+	Boolean error = true;
+	while(error){
+	System.out.println("What character do you want to guess? ");
+	String character = sc.next();
+	for(Evidence x: players2){
+		if(x.name()==character)error = false;
+	}
+	if(!error) break;
+		
+	System.out.println("Sorry that is not a character please try again");
+	}
+	
+	error = true;
+	while(error){
+	System.out.println("What weapon do you want to guess? ");
+	String weapon = sc.next();
+	for(Evidence x: weapons){
+		if(x.name()==weapon)error = false;
+	}
+	if(!error) break;
+		
+	System.out.println("Sorry that is not a weapon please try again");
+	}
+	
+	String room = player.getRoom;
+	character.setRoom(room);
+	weapon.setRoom(room);
+	
+	//Check other players decks
 }
 
 
