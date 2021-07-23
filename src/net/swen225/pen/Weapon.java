@@ -7,39 +7,10 @@ public class Weapon implements Movable{
     this.weapon = weapon;
   }
 
-@Override
-public Space getSpace() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public boolean moveToSpace(Space space) {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-@Override
-public Position getPosition() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public boolean moveToPosition(Position pos) {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-@Override
-public String getName() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-@Override
-public void setName(String name) {
-	// TODO Auto-generated method stub
-
-}
+  public Character charIcon() {
+	  return weapon.charAt(0);
+  }
+  public String getName() {
+	  return weapon;
+  }
 }

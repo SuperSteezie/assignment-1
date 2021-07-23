@@ -13,5 +13,11 @@ public class GameTile implements Tile {
   public boolean isWall() {
 	  return iswall;
   }
+  public char charIcon() {
+	  if(isWall()) {
+		  return '#';
+	  }
+	  return '_';
+  }
 
 }

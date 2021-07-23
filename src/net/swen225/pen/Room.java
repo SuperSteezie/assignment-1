@@ -1,8 +1,13 @@
 package net.swen225.pen;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Room implements Evidence{
   private String roomname;
-  private Set<Moveable> moveables = new HashSet<Moveable>();
+  private Set<Movable> movables = new HashSet<Movable>();
   public Room(String roomname){
     this.roomname = roomname;
   }
@@ -14,29 +19,32 @@ public class Room implements Evidence{
    * @param the room to move the Moveable to
    * @param the Moveable to be moved
    */
-  public void shiftMoveable(Room newroom, Moveable moveable){
-    for(Moveable current : moveables){
+  public void shiftMoveable(Room newroom, Movable moveable){
+    for(Movable current : movables){
       if(current.equals(moveable)){
         newroom.addMoveable(current);
-        moveables.remove(current);
+        movables.remove(current);
         return;
       }
     }
   }
 
-  public void addMoveable(Moveable moveable){
-    moveables.add(moveables);
+  public void addMoveable(Movable moveable){
+    movables.add(moveable);
   }
 
+  public String getName() {
+	  return this.roomname;
+  }
 
   /**
    * returns .charIcon() values of all moveables to be used for drawing
    *
    * @return the list containing char representations of every moveable in the room
    */
-  public List<char> getMoveables(){
-    List<char> returner = new ArrayList<char>();
-    for(Moveable current : moveables){
+  public List<Character> getMovables(){
+    List<Character> returner = new ArrayList<Character>();
+    for(Movable current : movables){
       returner.add(current.charIcon());
     }
     return returner;
