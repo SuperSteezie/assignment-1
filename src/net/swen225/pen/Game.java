@@ -1,11 +1,11 @@
 package net.swen225.pen;
-
 import java.util.*;
+import java.io.IOException;
 
 public class Game {
 private Board board;
 private ArrayList<Evidence> answer = new ArrayList<Evidence>();
-
+private ArrayList<Evidence> weapons = new ArrayList<Evidence>();
 private Random r = new Random();
 
 
@@ -42,7 +42,6 @@ private void initialise() {
 	board = new Board(tempplayers,temppositions,temprooms);
 
 	//weapons
-	ArrayList<Evidence> weapons = new ArrayList<Evidence>();
 	weapons.add(new Weapon("Broom"));
 	weapons.add(new Weapon("Sissor"));
 	weapons.add(new Weapon("Knife"));
@@ -70,36 +69,100 @@ private void initialise() {
 			iter = board.getPlayers().iterator();
 		}
 	}
-}
+	
+	}
 
 private void run() {
-	System.out.println(board.toString());
+	for(Player x : board.getPlayers()) {
+		turn(x);
+	}
+
 }
 
 private void turn(Player player){
-	//clear txt (plz help)
-	//System.out.print(Board.drawBoard());
-	System.out.println("-----------------------");
-	System.out.println("Press enter to roll dice");
-
+	Scanner sc= new Scanner(System.in);
+	draw("Press enter to roll dice");
+	sc.next();
 //press enter to roll (random 1-12)
 	int moves = r.nextInt(5) + r.nextInt(5) + 2;
-//read inputs to move
+	for(int i=0; i<moves; i++) {
+		draw(
+				"Enter W to move up"+"\n"+
+				"Enter A to move left"+"\n"+
+				"Enter S to move down"+"\n"+
+				"Enter D to move right"+"\n"+"\n"+
+				"You have "+(moves-i)+" moves remaining" 
+				);
+		move(player, sc.next());
+		
+	}
 }
-private void move(Player player, int moves){
-//"input movement"
-//if on door tile can make guess
-//if W isValid(board[player.x, player.y+1])
-//board[player.x,player.y] = blank tile
-//board[player.x, player.y+1] = player
-//move(player, moves-1)
-//else "invaild move, try agian"
-//move(player, moves)
+private void move(Player player, String move){
+	if(move.toLowerCase().equals("w")) {
+		if(board.isSpaceFree(player.position.up(), player)) player.setPosition(player.position.up());
+	}
+	else if(move.toLowerCase().equals("a")) {
+		if(board.isSpaceFree(player.position.left(), player)) player.setPosition(player.position.left());
+	}
+	else if(move.toLowerCase().equals("s")) {
+		if(board.isSpaceFree(player.position.down(), player)) player.setPosition(player.position.down());
+	}
+	else if(move.toLowerCase().equals("d")) {
+		if(board.isSpaceFree(player.position.right(), player)) player.setPosition(player.position.right());
+	}
+	else {
+		Scanner sc= new Scanner(System.in);
+		draw(
+			"Enter W to move up"+"\n"+
+			"Enter A to move left"+"\n"+
+			"Enter S to move down"+"\n"+
+			"Enter D to move right"+"\n"+"\n"+
+			"That was an invalid move" 
+			);
+	move(player, sc.next());
+	}
 }
-private void guess(){
-//"input player"
-//"input weapon"
-// move player and weapon to room
+private void guess(Player player){
+	Scanner sc= new Scanner(System.in);
+	
+	
+	System.out.println("What character do you want to guess? ");
+	String character = sc.next();
+	while(!board.getPlayers().contains(character)) {
+		System.out.println("Sorry that is not a character please try again");
+		character = sc.next();
+	}
+	
+	System.out.println("What weapon do you want to guess? ");
+	String weapon = sc.next();
+	while(!weapons.contains(weapon)) {
+		System.out.println("Sorry that is not a weapon please try again");
+		weapon = sc.next();
+	}
+	
+	//String room = player.getRoom;
+	//if(room is middle room)
+	//ask for room and check to see if its the right guess, if wrong eliminate them 
+	
+	
+	//character.setRoom(room);
+	//weapon.setRoom(room);
+	//Check other players decks
+}
+
+private void draw(String txt){
+	System.out.println();
+	System.out.println();
+	System.out.println();
+	System.out.println();
+	System.out.println();
+	System.out.println();
+	System.out.println();
+	System.out.println(board.toString());
+	System.out.println();
+	System.out.println();
+	System.out.println(txt);
+	
 }
 
 
